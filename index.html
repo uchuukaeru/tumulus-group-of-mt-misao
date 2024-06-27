@@ -2,18 +2,54 @@
     <title>AR 古墳</title>
     </head>
     <body>
-    
-        <script type="module">
-            import { cr, rgb, asset } from "https://js.sabae.cc/aframe.js";
-            const scene = cr("a-scene");
-            scene.setAttribute("renderer", "colorManagement: true;");
-            document.body.appendChild(scene);
-            const aid = asset("https://uchuukaeru.github.io/tumulus-group-of-mt-misao/futamata_kofun_1.glb");
-            const obj = cr("a-entity", scene);
-            obj.setAttribute("gltf-model", aid);
-            obj.setAttribute("scale", { x: 1,y:1,z:1 });
-            obj.setAttribute("position", { x: 0,y:0,z:0 });
+        <div id="info">
+            AR 古墳 <br>
+            <div id="tumulus_list">
+                <!-- <a href="./">colorfull</a><br> -->
+
+            </div>
+        </div>
+        <style>
+            body {
+                margin: 0;
+                background-color: #eee;
+                font-family: sans-serif;
+            }
+            #info {
+                position: absolute;
+                background-color: rgba(155, 155, 155, 0.5);
+                padding: 0.5em;
+                margin: 0.5em;
+                color: #111;
+            }
+            a {
+                color: #228 !important;
+            }
+            #ARButton {
+                color: black !important;
+                border: 1px solid black !important;
+            }
+        </style>
+        <script>
+            const tumulus_list=[
+                {name:"二又古墳1",object:"futamata_kofun_1.glb"},
+                {name:"二又古墳2",object:"futamata_kofun_2.glb"},
+                {name:"護国神社裏山古墳",object:"gokoku_jinja_urayama_kofun.glb"},
+                {name:"八畳岩古墳1",object:"hachijoiwa_kofun_1.glb"},
+                {name:"八畳岩古墳2",object:"hachijoiwa_kofun_2.glb"},
+                {name:"金蔵山古墳",object:"kanakurayama_kofun.glb"},
+                {name:"操山古墳群18号墳",object:"misaoyama_kofungun_18_gou_fun.glb"},
+                {name:"沢田裏山古墳",object:"sawada_urayama_kofun.glb"},
+            ]
+
+            const list = document.getElementById('tumulus_list');
+            for(tumulu of tumulus_list){
+                const link = document.createElement('a');
+                link.textContent = tumulu.name;
+                link.setAttribute("href","ar.html?name="+tumulu.name+"&obj="+tumulu.object);
+                list.appendChild(link);
+                list.appendChild(document.createElement('br'))
+            }
         </script>
-    
     </body>
     </html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><link rel="icon" href="data:">
+    <title></title>
+    </head>
+    <body>
+        <script type="module">
+            import { cr, rgb, asset } from "https://js.sabae.cc/aframe.js";
+            const scene = cr("a-scene");
+            scene.setAttribute("renderer", "colorManagement: true;");
+            document.body.appendChild(scene);
+
+            let url = new URL(window.location.href);
+            let params = url.searchParams;
+            let name = params.get('name');
+            let object = params.get('obj');
+
+            console.log(name,object)
+            document.title = "AR 古墳 - "+name;
+
+            const aid = asset("https://uchuukaeru.github.io/tumulus-group-of-mt-misao/"+object);
+            const obj = cr("a-entity", scene);
+            obj.setAttribute("gltf-model", aid);
+            obj.setAttribute("scale", { x: 1,y:1,z:1 });
+            obj.setAttribute("position", { x: 0,y:0,z:0 });
+        </script>
+    
+    </body>
+    </html>
