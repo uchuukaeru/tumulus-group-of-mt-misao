@@ -3,7 +3,17 @@
     </head>
     <body>
     
-    AR 古墳
+        <script type="module">
+            import { cr, rgb, asset } from "https://js.sabae.cc/aframe.js";
+            const scene = cr("a-scene");
+            scene.setAttribute("renderer", "colorManagement: true;");
+            document.body.appendChild(scene);
+            const aid = asset("https://uchuukaeru.github.io/tumulus-group-of-mt-misao/futamata_kofun_1.glb");
+            const obj = cr("a-entity", scene);
+            obj.setAttribute("gltf-model", aid);
+            obj.setAttribute("scale", { x: 1,y:1,z:1 });
+            obj.setAttribute("position", { x: 0,y:0,z:0 });
+        </script>
     
     </body>
     </html>
