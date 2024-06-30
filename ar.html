@@ -8,18 +8,24 @@
             scene.setAttribute("renderer", "colorManagement: true;");
             document.body.appendChild(scene);
 
-            let url = new URL(window.location.href);
-            let params = url.searchParams;
-            let name = params.get('name');
-            let object = params.get('obj');
-            let height = params.get("h");
+            let params = 
+            new URL(window.location.href).searchParams;
+            let dict = {}
+            for(let entry of params.entries()){
+                dict[entry[0]] = entry[1];
+            }
+
+            let name = dict.name;
+            let object = dict.obj;
+            let height = ("h" in dict) ? dict.h : 0;
+            let scale = ("s" in dict) ? dict.s : 1;
 
             document.title = "AR 古墳 - "+name;
 
             const aid = asset("https://uchuukaeru.github.io/tumulus-group-of-mt-misao/"+object);
             const obj = cr("a-entity", scene);
             obj.setAttribute("gltf-model", aid);
-            obj.setAttribute("scale", { x: 1,y:1,z:1 });
+            obj.setAttribute("scale", { x: 1/scale,y: 1/scale,z: 1/scale });
             obj.setAttribute("position", { x: 0,y:0-height,z:0 });
         </script>
     

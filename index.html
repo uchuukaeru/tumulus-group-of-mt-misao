@@ -45,11 +45,24 @@
 
             const list = document.getElementById('tumulus_list');
             for(tumulu of tumulus_list){
-                const link = document.createElement('a');
-                link.textContent = tumulu.name;
-                link.setAttribute("href","ar.html?name="+tumulu.name+"&obj="+tumulu.object+"&h="+tumulu.height);
-                list.appendChild(link);
-                list.appendChild(document.createElement('br'))
+                const collapsible = document.createElement("details")
+                const summary = document.createElement("summary");
+                summary.innerHTML = tumulu.name;
+
+                const actual = document.createElement("a");
+                actual.textContent = "実物大";
+                actual.setAttribute("href", `ar.html?name=${tumulu.name}&obj=${tumulu.object}&h=${tumulu.height}&s=1`);
+
+                const palm = document.createElement("a");
+                palm.textContent = "ミニサイズ";
+                palm.setAttribute("href",`ar.html?name=${tumulu.name}&obj=${tumulu.object}&s=3`);
+
+                collapsible.appendChild(summary);
+                collapsible.appendChild(actual);
+                collapsible.appendChild(document.createElement('br'))
+                collapsible.appendChild(palm);
+
+                list.appendChild(collapsible);
             }
         </script>
     </body>
