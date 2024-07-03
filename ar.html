@@ -22,7 +22,7 @@
 
             document.title = "AR 古墳 - "+name;
 
-            const aid = asset("https://uchuukaeru.github.io/tumulus-group-of-mt-misao/"+object);
+            const aid = asset(`https://uchuukaeru.github.io/tumulus-group-of-mt-misao/low-polygon/${object}-low.glb`);
             const obj = cr("a-entity", scene);
             obj.setAttribute("gltf-model", aid);
             obj.setAttribute("scale", { x: 1/scale,y: 1/scale,z: 1/scale });
